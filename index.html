@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#10231f" />
+  <title>ShiftBite — Food delivery demo</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="announcement">Fresh cravings, delivered with care <span>•</span> Demo experience</div>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="ShiftBite home"><span class="brand-mark">S</span><span>Shift<span class="brand-accent">Bite</span><small>GOOD FOOD. GOOD MOOD.</small></span></a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <a href="#restaurants">Explore food</a><a href="#how-it-works">How it works</a><a href="#track">Track order</a>
+    </nav>
+    <div class="header-actions"><button class="icon-btn" id="openCart" aria-label="Open cart">🛒 <span id="cartCount">0</span></button><button class="primary-btn small" id="loginBtn">Sign in</button></div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="pulse"></span> YOUR NEXT FAVOURITE MEAL IS HERE</div>
+        <h1>Cravings don’t wait.<br><em>Neither should you.</em></h1>
+        <p>Discover local favourites, order in a few taps, and follow every bite from kitchen to doorstep.</p>
+        <div class="hero-search"><span>⌕</span><input id="searchInput" type="search" placeholder="Search dishes or restaurants..." aria-label="Search dishes or restaurants"><button id="searchBtn" class="primary-btn">Find food</button></div>
+        <div class="hero-meta"><span>✦ Curated local spots</span><span>✓ Easy checkout</span><span>↗ Order updates</span></div>
+      </div>
+      <div class="hero-art">
+        <div class="hero-glow"></div>
+        <div class="floating-tag tag-top">✦ MADE FRESH</div>
+        <div class="food-emoji">🍔</div>
+        <div class="food-sticker">GOOD<br>MOOD<br>FOOD.</div>
+        <div class="floating-tag tag-bottom"><span class="mini-dot"></span> A little joy, on the way</div>
+        <div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div>
+      </div>
+    </section>
+
+    <section class="trust-strip">
+      <div><strong>01</strong><span>Discover your next bite</span></div><div><strong>02</strong><span>Checkout without the fuss</span></div><div><strong>03</strong><span>Know what happens next</span></div>
+    </section>
+
+    <section class="section" id="restaurants">
+      <div class="section-heading"><div><div class="eyebrow">THE GOOD STUFF</div><h2>What are you craving?</h2><p>Pick a mood. We’ll bring the flavour.</p></div><a class="text-link" href="#menuGrid">Browse all food <span>↗</span></a></div>
+      <div class="category-row" id="categoryRow">
+        <button class="category active" data-category="All"><span>🍽️</span> All food</button>
+        <button class="category" data-category="Burgers"><span>🍔</span> Burgers</button>
+        <button class="category" data-category="Pizza"><span>🍕</span> Pizza</button>
+        <button class="category" data-category="Asian"><span>🍜</span> Asian</button>
+        <button class="category" data-category="Desserts"><span>🍰</span> Desserts</button>
+        <button class="category" data-category="Drinks"><span>🥤</span> Drinks</button>
+      </div>
+      <div class="section-heading menu-title"><div><h3 id="resultsTitle">Popular right now</h3><p>Demo menu · Sample prices in INR</p></div><span class="open-pill"><span></span> Taking orders</span></div>
+      <div class="food-grid" id="menuGrid"></div>
+    </section>
+
+    <section class="promo-band" id="how-it-works">
+      <div class="promo-symbol">✳</div><div><div class="eyebrow">LESS SCROLLING, MORE SAVOURING</div><h2>Your next great meal is<br>just a few taps away.</h2><p>Find a favourite, build your order, and let ShiftBite take it from there.</p></div><a href="#restaurants" class="light-btn">Explore the menu <span>↗</span></a>
+    </section>
+
+    <section class="section tracking-section" id="track">
+      <div class="section-heading"><div><div class="eyebrow">NO GUESSING GAMES</div><h2>Your order, at a glance.</h2><p>Try the demo tracker to see the order journey.</p></div></div>
+      <div class="tracking-card">
+        <div class="tracking-left"><div class="track-icon">🛵</div><div><span class="tracking-label">SHIFTBITE ORDER TRACKER</span><h3 id="trackingHeadline">Good things are cooking.</h3><p id="trackingDescription">Place a demo order and watch its status update here.</p></div></div>
+        <div class="tracking-progress" id="trackingProgress"><div class="track-step current"><span>1</span><small>Order placed</small></div><i></i><div class="track-step"><span>2</span><small>Preparing</small></div><i></i><div class="track-step"><span>3</span><small>On the way</small></div><i></i><div class="track-step"><span>4</span><small>Delivered</small></div></div>
+        <button class="secondary-btn" id="demoTrackBtn">Preview tracking status ↗</button>
+      </div>
+    </section>
+  </main>
+
+  <footer><a class="brand footer-brand" href="#"><span class="brand-mark">S</span><span>Shift<span class="brand-accent">Bite</span><small>GOOD FOOD. GOOD MOOD.</small></span></a><p>A smarter shift from craving to a satisfying bite.</p><span class="footer-note">Student project · Frontend demo only</span></footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <div class="overlay" id="cartOverlay" aria-hidden="true">
+    <aside class="cart-drawer" aria-label="Shopping cart">
+      <div class="drawer-header"><div><span class="eyebrow">YOUR ORDER</span><h2>Your bite list <span id="drawerCount">(0)</span></h2></div><button class="close-btn" id="closeCart" aria-label="Close cart">×</button></div>
+      <div id="cartItems" class="cart-items"><div class="empty-cart">🛍️<h3>Your cart is taking a nap.</h3><p>Add something delicious to wake it up.</p></div></div>
+      <div class="cart-summary"><div><span>Subtotal</span><strong id="subtotal">₹0</strong></div><div><span>Delivery fee</span><strong id="deliveryFee">₹0</strong></div><div class="total-row"><span>Total</span><strong id="total">₹0</strong></div><button class="primary-btn checkout-btn" id="checkoutBtn">Continue to checkout <span>→</span></button><p class="demo-disclaimer">Demo only — no real payment is taken.</p></div>
+    </aside>
+  </div>
+
+  <div class="modal-backdrop" id="checkoutModal" aria-hidden="true">
+    <div class="modal">
+      <button class="close-btn modal-close" id="closeCheckout" aria-label="Close checkout">×</button>
+      <div class="eyebrow">ALMOST THERE</div><h2>Where should we bring it?</h2><p class="muted">This is a frontend demonstration. No actual order or payment will be submitted.</p>
+      <form id="checkoutForm">
+        <label for="customerName">Your name</label><input id="customerName" required placeholder="e.g. Alex Sharma">
+        <label for="customerAddress">Delivery address</label><textarea id="customerAddress" required placeholder="House / street / area" rows="3"></textarea>
+        <label for="paymentMethod">Payment preference</label><select id="paymentMethod"><option>Cash on delivery (demo)</option><option>UPI (demo)</option><option>Card (demo)</option></select>
+        <button class="primary-btn checkout-btn" type="submit">Place demo order <span>→</span></button>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="loginModal" aria-hidden="true">
+    <div class="modal login-modal"><button class="close-btn modal-close" id="closeLogin" aria-label="Close sign in">×</button><div class="login-mark">S</div><div class="eyebrow">WELCOME TO SHIFTBITE</div><h2>Good to have you here.</h2><p class="muted">Sign-in is a visual demo for this frontend preview.</p><form id="loginForm"><label for="loginEmail">Email address</label><input id="loginEmail" type="email" required placeholder="you@example.com"><button class="primary-btn checkout-btn" type="submit">Continue <span>→</span></button></form></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
